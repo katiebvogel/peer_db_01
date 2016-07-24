@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="assignmentApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Peer Database 01</title>
+    <script src="vendors/angular/angular.min.js"></script>
+    <script src="scripts/client.js"></script>
+  </head>
+  <body ng-controller = "AssignmentController as assign">
+    <h1>Assignments:</h1>
+    Assignment Number: <input type = "number" ng-model="assign.assignment_number" />
+    Student Name: <input type = "text" ng-model = "assign.student_name" />
+    Score:  <input type = "number" ng-model = "assign.score" />
+    Completed On: <input type = "date" ng-model = "assign.date_completed" />
+    Comments: <input type= "text" ng-model = "assign.extras"  />
+
+    <button ng-click="assign.doAction()">Save Assignment</button>
+
+    <ul>
+      <li ng-repeat = "assignment in assign.assignments">
+    Student: {{assignment.student_name}};
+      ID#:      {{assignment._id}}
+      </li>
+    </ul>
+
+    ID# to remove:  <input type = "ObjectID" ng-model = "assign._id" />
+    <button ng-click="assign.removeAction()">Delete</button>
+
+  </body>
+</html>
