@@ -18,8 +18,10 @@
 
     <ul>
       <li ng-repeat = "assignment in assign.assignments">
-    Student: {{assignment.student_name}};
-      ID#:      {{assignment._id}}
+    Student: {{assignment.student_name}} </br>
+      ID#:      {{assignment._id}} </br>
+      <button ng-click="assign.indButton()" ng-model="assignment">Delete</button>
+
       </li>
     </ul>
 

@@ -50,4 +50,13 @@ vm.assignment = response.data;
 
 } //end delete function
 
+vm.indButton = function(){
+console.log('you clicked an individual REMOVE button');
+$http.delete('/assign/deleteAssignmentWithId/' ).then(function(response){
+vm.assignment = response.data;
+}, function(response){
+  console.log('failure deleting');
+})
+};//end individual remove button click funtion
+
 }) //end controller

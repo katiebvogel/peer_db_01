@@ -34,8 +34,25 @@ router.post('/createAssignment', function(request, response){
       response.sendStatus(200);
     }
   });
+}); //end posting
 
-}); //end post
+router.delete('/deleteAssignmentWithId/:id', function(request, response){
+
+    var id = vm.assign._id;
+console.log('Deleting your Assignment', id);
+    assignment.remove(function(err){
+      if(err){
+        console.log('Error deleting this assignment', toDelete, err);
+        response.sendStatus(500);
+      } else {
+        console.log('Data saved!', data);
+        response.sendStatus(200);
+      }
+    });
+
+});
+
+
 
 router.delete('/removeWithId/:id', function(request, response){
   var id = request.params.id;
@@ -51,22 +68,14 @@ router.delete('/removeWithId/:id', function(request, response){
       }
     })
 
-    console.log('assignment deleted');
+    console.log('assignment deleted', id);
     response.sendStatus(200);
   }
 
 })
 });
-// router.get('/assign', function(request, response){
-//   Assignment.find({assignmet_number: {$exists: true}}, function(err, assignments){
-//     if(err){
-//       console.log('error finding your stuff', err);
-//       response.sendStatus(500);
-//     }else {
-//       console.log('Found Assignmet', assignments);
-//       response.send(assignments);
-//     }
-//   })
-// });
+
+
+
 
 module.exports = router;
