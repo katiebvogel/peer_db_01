@@ -36,24 +36,32 @@ router.post('/createAssignment', function(request, response){
   });
 }); //end posting
 
+//for the individual remove button
 router.delete('/deleteAssignmentWithId/:id', function(request, response){
 
-    var id = vm.assign._id;
-console.log('Deleting your Assignment', id);
+    var id = request.params.id;
+
+Assignment.findById(id, function(err, assignment){
+  if (err){
+    console.log('deletion error', err);
+    response.sendStatus(500);
+  } else {
     assignment.remove(function(err){
       if(err){
-        console.log('Error deleting this assignment', toDelete, err);
+        console.log('Error deleting this assignment', err);
         response.sendStatus(500);
-      } else {
-        console.log('Data saved!', data);
-        response.sendStatus(200);
       }
-    });
+    })
 
+      console.log('you have deleted assignment:', id);
+      response.sendStatus(200);
+
+  }
+})
 });
 
 
-
+//this is the router for the remove button that requires cut/paste or typing of the object id from the assignment
 router.delete('/removeWithId/:id', function(request, response){
   var id = request.params.id;
 

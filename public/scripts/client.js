@@ -39,6 +39,8 @@ $http.get('/assign').then(function(response){
 })
 } //end click function
 
+
+//remove button that requires entry of ID #
 vm.removeAction = function(){
 console.log('you have clicked REMOVE');
 $http.delete('/assign/removeWithId/' + vm._id ).then(function(response){
@@ -46,17 +48,19 @@ vm.assignment = response.data;
 }, function(response){
   console.log('failure deleting');
 })
-
-
 } //end delete function
 
-vm.indButton = function(){
+
+//inidividual buttons
+vm.indButton = function(assignmentId){
 console.log('you clicked an individual REMOVE button');
-$http.delete('/assign/deleteAssignmentWithId/' ).then(function(response){
+$http.delete('/assign/deleteAssignmentWithId/' + assignmentId ).then(function(response){
 vm.assignment = response.data;
 }, function(response){
   console.log('failure deleting');
 })
 };//end individual remove button click funtion
+
+
 
 }) //end controller

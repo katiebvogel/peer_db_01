@@ -8,19 +8,19 @@
   </head>
   <body ng-controller = "AssignmentController as assign">
     <h1>Assignments:</h1>
-    Assignment Number: <input type = "number" ng-model="assign.assignment_number" />
-    Student Name: <input type = "text" ng-model = "assign.student_name" />
-    Score:  <input type = "number" ng-model = "assign.score" />
-    Completed On: <input type = "date" ng-model = "assign.date_completed" />
-    Comments: <input type= "text" ng-model = "assign.extras"  />
+    Assignment Number: <input type = "number" ng-model="assign.assignment_number" /></br>
+    Student Name: <input type = "text" ng-model = "assign.student_name" /></br>
+    Score:  <input type = "number" ng-model = "assign.score" /></br>
+    Completed On: <input type = "date" ng-model = "assign.date_completed" /></br>
+    Comments: <input type= "text" ng-model = "assign.extras"  /></br>
 
-    <button ng-click="assign.doAction()">Save Assignment</button>
+    <button ng-click="assign.doAction()">Save Assignment</button></br>
 
     <ul>
       <li ng-repeat = "assignment in assign.assignments">
     Student: {{assignment.student_name}} </br>
       ID#:      {{assignment._id}} </br>
-      <button ng-click="assign.indButton()" ng-model="assignment">Delete</button>
+      <button ng-click="assign.indButton(assignment._id)" ng-model="assignment">Delete</button>
 
       </li>
     </ul>
